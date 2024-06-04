@@ -1,7 +1,7 @@
 import create from "zustand";
 import { persist } from "zustand/middleware";
 
-interface Favorites {
+interface FavoritesPhotos {
   albumId: number;
   id: number;
   title: string;
@@ -10,8 +10,8 @@ interface Favorites {
 }
 
 interface FavoritesState {
-  favoriteAlbums: Favorites[];
-  addFavoriteAlbums: (favorite: Favorites) => void;
+  favoriteAlbums: FavoritesPhotos[];
+  addFavoriteAlbums: (favorite: FavoritesPhotos) => void;
   removeFavoriteAlbums: (albumId: number) => void;
 }
 

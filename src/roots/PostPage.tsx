@@ -1,4 +1,6 @@
 import { useLoaderData } from "react-router-dom";
+import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 interface PostProps {
   id: number;
@@ -28,6 +30,9 @@ function PostPage() {
           <p>{post.name}</p>
           <p>{post.email}</p>
           <p>{post.body}</p>
+          <button onClick={() => addFav(post)}>
+            <FaRegHeart />
+          </button>
         </div>
       ))}
     </>

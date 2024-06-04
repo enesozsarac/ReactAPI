@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
-import { FaRegHeart } from "react-icons/fa";
 import useFavoriteAlbumsStore from "../stores/favorites";
-// import { FaHeart } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 interface AlbumProps {
   albumId: number;
@@ -63,7 +63,11 @@ function AlbumPage() {
           <div>
             <img src={album.thumbnailUrl} />
             <button onClick={() => addFav(album)}>
-              <FaRegHeart />
+              {favoriteAlbums.some((fav) => fav.id === album.id) ? (
+                <FaHeart />
+              ) : (
+                <FaRegHeart />
+              )}
             </button>
           </div>
         </div>
