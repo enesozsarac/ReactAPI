@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
+import { useFavoritePostsStore } from "../stores/favorites";
 
 interface PostProps {
   id: number;
@@ -22,10 +23,32 @@ export const postLoader = async ({ params }: any) => {
 function PostPage() {
   const posts = useLoaderData() as PostProps[];
 
+  const favoritePost = useFavoritePostsStore((state) => state.favoritePost);
+  const addFavoritePosts = useFavoritePostsStore(
+    (state) => state.addFavoritePosts
+  );
+
+  const removeFavoritePosts = useFavoritePostsStore(
+    (state) => state.removeFavoritePosts
+  );
 
   const addFav = (post: any) => {
-    console.log(post.id)
-  }
+    const favListPost = {
+      postId: post.postId,
+      id: post.id,
+      name: post.name,
+      email: post.email,
+      body: post.body,
+    };
+
+    const existingFavorite = favoritePost.find((item) => item.id === post.id);
+
+    if (existingFavorite) {
+      removeFavoritePosts(post.id);
+    } else {
+      addFavoritePosts(favListPost);
+    }
+  };
 
   return (
     <>
@@ -36,7 +59,11 @@ function PostPage() {
           <p>{post.email}</p>
           <p>{post.body}</p>
           <button onClick={() => addFav(post)}>
-            <FaRegHeart />
+          {favoritePost.some((fav) => fav.id === post.id) ? (
+                <FaHeart />
+              ) : (
+                <FaRegHeart />
+              )}
           </button>
         </div>
       ))}
