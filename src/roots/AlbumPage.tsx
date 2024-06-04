@@ -30,6 +30,10 @@ function AlbumPage() {
     (state) => state.addFavoriteAlbums
   );
 
+  const removeFavoriteAlbums = useFavoriteAlbumsStore(
+    (state) => state.removeFavoriteAlbums
+  );
+
   const addFav = (album: any) => {
     const favList = {
       albumId: album.albumId,
@@ -39,8 +43,15 @@ function AlbumPage() {
       thumbnailUrl: album.thumbnailUrl,
     };
 
-    addFavoriteAlbums(favList);
-    console.log(favoriteAlbums);
+    const existingFavorite = favoriteAlbums.find(
+      (item) => item.id === album.id
+    );
+
+    if (existingFavorite) {
+      removeFavoriteAlbums(album.id);
+    } else {
+      addFavoriteAlbums(favList);
+    }
   };
 
   return (

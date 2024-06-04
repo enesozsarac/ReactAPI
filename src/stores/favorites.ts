@@ -1,4 +1,5 @@
-import { create } from "zustand";
+import create from "zustand";
+import { persist } from "zustand/middleware";
 
 interface Favorites {
   albumId: number;
@@ -11,18 +12,29 @@ interface Favorites {
 interface FavoritesState {
   favoriteAlbums: Favorites[];
   addFavoriteAlbums: (favorite: Favorites) => void;
-  // removeFavoriteAlbums: (albumId : number) => void;
+  removeFavoriteAlbums: (albumId: number) => void;
 }
 
-const useFavoriteAlbumsStore = create<FavoritesState>((set) => ({
-  favoriteAlbums: [],
-  addFavoriteAlbums: (favorite) =>
-    set((state) => ({
-      favoriteAlbums: [...state.favoriteAlbums, favorite],
-    })),
-  // removeFavoriteAlbums: (albumId) => ({
-  //     favoriteAlbums: state.favoriteAlbums.filter(favorite => favorite.albumId !== albumId)
-  // })
-}));
+const useFavoriteAlbumsStore = create<FavoritesState>()(
+  persist(
+    (set) => ({
+      favoriteAlbums: [],
+      addFavoriteAlbums: (favorite) =>
+        set((state) => ({
+          favoriteAlbums: [...state.favoriteAlbums, favorite],
+        })),
+      removeFavoriteAlbums: (id) =>
+        set((state) => ({
+          favoriteAlbums: state.favoriteAlbums.filter(
+            (favorite) => favorite.id !== id
+          ),
+        })),
+    }),
+    {
+      name: "favorites-album", // storage key name
+      getStorage: () => localStorage, // configure localStorage as the storage
+    }
+  )
+);
 
 export default useFavoriteAlbumsStore;
