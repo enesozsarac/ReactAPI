@@ -15,7 +15,7 @@ interface FavoritesState {
   removeFavoriteAlbums: (albumId: number) => void;
 }
 
-const useFavoriteAlbumsStore = create<FavoritesState>()(
+export const useFavoriteAlbumsStore = create<FavoritesState>()(
   persist(
     (set) => ({
       favoriteAlbums: [],
@@ -37,4 +37,38 @@ const useFavoriteAlbumsStore = create<FavoritesState>()(
   )
 );
 
-export default useFavoriteAlbumsStore;
+interface FavoritesPosts {
+  id: number;
+  postId: number;
+  name: string;
+  email: string;
+  body: string;
+}
+
+interface FavoritePostsState {
+  favoritePost: FavoritesPosts[];
+  addFavoritePosts: (favorite: FavoritesPosts) => void;
+  removeFavoritePosts: (id: number) => void;
+}
+
+export const useFavoritePostsStore = create<FavoritePostsState>()(
+  persist(
+    (set) => ({
+      favoritePost: [],
+      addFavoritePosts: (favorite) =>
+        set((state) => ({
+          favoritePost: [...state.favoritePost, favorite],
+        })),
+      removeFavoritePosts: (id) =>
+        set((state) => ({
+          favoritePost: state.favoritePost.filter(
+            (favorite) => favorite.id !== id
+          ),
+        })),
+    }),
+    {
+      name: "favorites-album", // storage key name
+      getStorage: () => localStorage, // configure localStorage as the storage
+    }
+  )
+);

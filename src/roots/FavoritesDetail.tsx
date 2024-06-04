@@ -1,4 +1,4 @@
-import useFavoriteAlbumsStore from "../stores/favorites";
+import { useFavoriteAlbumsStore } from "../stores/favorites";
 
 function FavoritesDetail() {
   const favoriteAlbums = useFavoriteAlbumsStore(

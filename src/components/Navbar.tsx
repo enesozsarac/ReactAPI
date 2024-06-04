@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import useFavoriteAlbumsStore from "../stores/favorites";
+import { useFavoriteAlbumsStore } from "../stores/favorites";
+
 
 const Nav = styled.div`
   padding: 20px;

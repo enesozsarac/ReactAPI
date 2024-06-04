@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
-import useFavoriteAlbumsStore from "../stores/favorites";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
+import { useFavoriteAlbumsStore } from "../stores/favorites";
 
 interface AlbumProps {
   albumId: number;
