@@ -45,9 +45,8 @@ const Card = styled.div`
   }
 `;
 
-
 const Btn = styled.button`
-  padding: 10px;
+  padding: 10px 20px;
   & .link {
     text-decoration: none;
     color: #121212;
@@ -55,6 +54,9 @@ const Btn = styled.button`
 `;
 
 const Block = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 10px;
   border: 1px solid #121212;
   margin: 20px;
@@ -125,9 +127,13 @@ function UserDetail() {
         <Tab eventKey="post" title="Post">
           {postData.map((item) => (
             <Block key={item.id}>
-              <div>{item.title}</div>
-              <div>{item.body}</div>
-              <Btn><Link to={`/users/${userId}/posts/${item.id}`}>Git</Link></Btn>
+              <div>
+                <div>{item.title}</div>
+                <div>{item.body}</div>
+              </div>
+              <Btn>
+                <Link to={`/users/${userId}/posts/${item.id}`}>Git</Link>
+              </Btn>
             </Block>
           ))}
         </Tab>
@@ -135,7 +141,9 @@ function UserDetail() {
           {albumData.map((item) => (
             <Block key={item.id}>
               <div>{item.title}</div>
-              <Btn><Link to={`/users/${userId}/albums/${item.id}`}>Git</Link></Btn>
+              <Btn>
+                <Link to={`/users/${userId}/albums/${item.id}`}>Git</Link>
+              </Btn>
             </Block>
           ))}
         </Tab>

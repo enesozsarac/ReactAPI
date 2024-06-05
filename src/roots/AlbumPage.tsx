@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { useFavoriteAlbumsStore } from "../stores/favorites";
+import styled from "styled-components";
 
 interface AlbumProps {
   albumId: number;
@@ -10,6 +11,28 @@ interface AlbumProps {
   url: string;
   thumbnailUrl: string;
 }
+
+const Card = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px solid #121212;
+  gap: 20px;
+  padding-block: 20px;
+  text-align: center;
+  margin: 20px 20px;
+`;
+
+const CardBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
+const Btn = styled.button`
+  padding: 10px 20px;
+`;
 
 export const albumLoader = async ({ params }: any) => {
   const response = await fetch(
@@ -57,20 +80,20 @@ function AlbumPage() {
   return (
     <>
       {albums.map((album) => (
-        <div key={album.id}>
-          <div>{album.albumId}</div>
+        <Card key={album.id}>
+          <div>{album.id}</div>
           <div>{album.title}</div>
-          <div>
+          <CardBody>
             <img src={album.thumbnailUrl} />
-            <button onClick={() => addFav(album)}>
+            <Btn onClick={() => addFav(album)}>
               {favoriteAlbums.some((fav) => fav.id === album.id) ? (
                 <FaHeart />
               ) : (
                 <FaRegHeart />
               )}
-            </button>
-          </div>
-        </div>
+            </Btn>
+          </CardBody>
+        </Card>
       ))}
     </>
   );

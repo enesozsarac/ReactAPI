@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { useFavoritePostsStore } from "../stores/favorites";
+import styled from "styled-components";
 
 interface PostProps {
   id: number;
@@ -10,6 +11,22 @@ interface PostProps {
   email: string;
   body: string;
 }
+
+const Card = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px solid #121212;
+  gap: 20px;
+  padding-block: 20px;
+  text-align: center;
+  margin: 20px 20px;
+`;
+
+const Btn = styled.button`
+  padding: 10px 20px;
+`;
 
 export const postLoader = async ({ params }: any) => {
   const response = await fetch(
@@ -53,19 +70,19 @@ function PostPage() {
   return (
     <>
       {posts.map((post) => (
-        <div key={post.id}>
+        <Card key={post.id}>
           <p>{post.id}</p>
           <p>{post.name}</p>
           <p>{post.email}</p>
           <p>{post.body}</p>
-          <button onClick={() => addFav(post)}>
-          {favoritePost.some((fav) => fav.id === post.id) ? (
-                <FaHeart />
-              ) : (
-                <FaRegHeart />
-              )}
-          </button>
-        </div>
+          <Btn onClick={() => addFav(post)}>
+            {favoritePost.some((fav) => fav.id === post.id) ? (
+              <FaHeart />
+            ) : (
+              <FaRegHeart />
+            )}
+          </Btn>
+        </Card>
       ))}
     </>
   );

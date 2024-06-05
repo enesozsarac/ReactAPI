@@ -23,6 +23,7 @@ const Card = styled.div`
   border: 2px solid #121212;
   gap: 20px;
   padding-block: 20px;
+  text-align: center;
 `;
 
 const Btn = styled.button`
@@ -47,10 +48,13 @@ function UsersPage() {
       <Wrapper>
         {users.map((user) => (
           <Card key={user.id}>
-            <p>{user.id}</p>
-            <p>{user.name}</p>
-            <p>{user.username}</p>
-            <p>{user.email}</p>
+            <div>
+              <p>{user.id}</p>
+              <p>{user.name}</p>
+              <p>{user.username}</p>
+              <p>{user.email}</p>
+            </div>
+
             <Btn>
               <Link className="link" to={`/users/${user.id}`}>
                 {user.name}
