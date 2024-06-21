@@ -2,19 +2,18 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useFavoriteAlbumsStore } from "../stores/favorites";
 
-
 const Nav = styled.div`
   padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 50px;
-  border-bottom: 2px solid #121212;
+  border-bottom: 2px solid #ffffff;
   & .link {
     text-decoration: none;
     font-weight: 600;
-    color: #121212;
-    border: 1px solid #121212;
+    color: #fff;
+    border: 1px solid #ffffff;
     padding: 10px;
   }
 `;

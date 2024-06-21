@@ -20,17 +20,20 @@ const Card = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: 2px solid #121212;
+  border: 2px solid #fff;
   gap: 20px;
   padding-block: 20px;
   text-align: center;
+  border-radius: 8px;
 `;
 
 const Btn = styled.button`
   padding: 10px;
+  border-color: #fff;
+  border-radius: 8px;
   & .link {
     text-decoration: none;
-    color: #121212;
+    color: #fff;
   }
 `;
 

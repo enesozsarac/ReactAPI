@@ -49,7 +49,7 @@ const Btn = styled.button`
   padding: 10px 20px;
   & .link {
     text-decoration: none;
-    color: #121212;
+    color: #fff;
   }
 `;
 
@@ -58,7 +58,7 @@ const Block = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  border: 1px solid #121212;
+  border: 1px solid #fff;
   margin: 20px;
 `;
 

@@ -7,7 +7,7 @@ const Card = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: 2px solid #121212;
+  border: 2px solid #fff;
   gap: 20px;
   padding-block: 20px;
   text-align: center;
