@@ -32,6 +32,8 @@ interface TodoProps {
 }
 
 const Wrapper = styled.div`
+  color: #eee;
+
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -45,21 +47,30 @@ const Card = styled.div`
   }
 `;
 
-const Btn = styled.button`
-  padding: 10px 20px;
+const Btn = styled.div`
   & .link {
+    padding: 10px 25px;
+    border: 1px solid #eee;
     text-decoration: none;
-    color: #fff;
+    color: #eee;
+    border-radius: 10px;
+  }
+  & .link:hover {
+    color: #131313;
+    background-color: #eee;
   }
 `;
 
 const Block = styled.div`
+  color: #eee;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  border: 1px solid #fff;
+  padding: 20px;
+  border: 1px solid #eee;
   margin: 20px;
+  border-radius: 10px;
 `;
 
 export const userLoader = async ({ params }: any) => {
@@ -132,7 +143,9 @@ function UserDetail() {
                 <div>{item.body}</div>
               </div>
               <Btn>
-                <Link to={`/users/${userId}/posts/${item.id}`}>Git</Link>
+                <Link className="link" to={`/users/${userId}/posts/${item.id}`}>
+                  Git
+                </Link>
               </Btn>
             </Block>
           ))}
@@ -142,7 +155,12 @@ function UserDetail() {
             <Block key={item.id}>
               <div>{item.title}</div>
               <Btn>
-                <Link to={`/users/${userId}/albums/${item.id}`}>Git</Link>
+                <Link
+                  className="link"
+                  to={`/users/${userId}/albums/${item.id}`}
+                >
+                  Git
+                </Link>
               </Btn>
             </Block>
           ))}

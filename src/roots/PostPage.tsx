@@ -13,19 +13,25 @@ interface PostProps {
 }
 
 const Card = styled.div`
+  color: #eee;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: 2px solid #fff;
+  border: 2px solid #eee;
   gap: 20px;
   padding-block: 20px;
   text-align: center;
   margin: 20px 20px;
+  border-radius: 10px;
 `;
 
 const Btn = styled.button`
+  color: #eee;
   padding: 10px 20px;
+  border-color: #eee;
+  font-size: 1.2rem;
+  border-radius: 10px;
 `;
 
 export const postLoader = async ({ params }: any) => {

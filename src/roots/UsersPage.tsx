@@ -16,11 +16,12 @@ const Wrapper = styled.div`
 `;
 
 const Card = styled.div`
+  color: #eee;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: 2px solid #fff;
+  border: 2px solid #eee;
   gap: 20px;
   padding-block: 20px;
   text-align: center;
@@ -28,12 +29,16 @@ const Card = styled.div`
 `;
 
 const Btn = styled.button`
-  padding: 10px;
-  border-color: #fff;
-  border-radius: 8px;
   & .link {
+    padding: 15px 20px;
+    border: 1px solid #eee;
+    border-radius: 10px;
     text-decoration: none;
-    color: #fff;
+    color: #eee;
+  }
+  & .link:hover {
+    color: #131313;
+    background-color: #eee;
   }
 `;
 

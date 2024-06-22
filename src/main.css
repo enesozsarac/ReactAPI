@@ -3,5 +3,12 @@
   margin: 0;
   padding: 0;
   background-color: #141414;
-  color: white;
+}
+
+.nav-tabs .nav-link {
+  color: #eee;
+}
+
+.nav-tabs .nav-link:hover {
+  color: #eee;
 }

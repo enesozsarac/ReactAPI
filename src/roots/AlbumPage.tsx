@@ -12,16 +12,23 @@ interface AlbumProps {
   thumbnailUrl: string;
 }
 
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+`;
+
 const Card = styled.div`
+  color: #eee;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: 2px solid #fff;
+  border: 2px solid #eee;
   gap: 20px;
   padding-block: 20px;
   text-align: center;
   margin: 20px 20px;
+  border-radius: 10px;
 `;
 
 const CardBody = styled.div`
@@ -31,7 +38,10 @@ const CardBody = styled.div`
 `;
 
 const Btn = styled.button`
-  padding: 10px 20px;
+  color: #eee;
+  border-radius: 10px;
+  padding: 10px;
+  border-color: #eee;
 `;
 
 export const albumLoader = async ({ params }: any) => {
@@ -79,22 +89,24 @@ function AlbumPage() {
 
   return (
     <>
-      {albums.map((album) => (
-        <Card key={album.id}>
-          <div>{album.id}</div>
-          <div>{album.title}</div>
-          <CardBody>
-            <img src={album.thumbnailUrl} />
-            <Btn onClick={() => addFav(album)}>
-              {favoriteAlbums.some((fav) => fav.id === album.id) ? (
-                <FaHeart />
-              ) : (
-                <FaRegHeart />
-              )}
-            </Btn>
-          </CardBody>
-        </Card>
-      ))}
+      <Wrapper>
+        {albums.map((album) => (
+          <Card key={album.id}>
+            <div>{album.id}</div>
+            <div>{album.title}</div>
+            <CardBody>
+              <img src={album.thumbnailUrl} />
+              <Btn onClick={() => addFav(album)}>
+                {favoriteAlbums.some((fav) => fav.id === album.id) ? (
+                  <FaHeart />
+                ) : (
+                  <FaRegHeart />
+                )}
+              </Btn>
+            </CardBody>
+          </Card>
+        ))}
+      </Wrapper>
     </>
   );
 }
