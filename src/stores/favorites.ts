@@ -67,8 +67,8 @@ export const useFavoritePostsStore = create<FavoritePostsState>()(
         })),
     }),
     {
-      name: "favorites-album", // storage key name
-      getStorage: () => localStorage, // configure localStorage as the storage
+      name: "favorites-album", 
+      getStorage: () => localStorage, 
     }
   )
 );

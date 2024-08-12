@@ -115,9 +115,12 @@ function UserDetail() {
 
   useEffect(() => {
     fetchPostData();
+   
     fetchAlbumData();
     fetchTodoData();
   }, []);
+
+  console.log(postData)
 
   return (
     <>

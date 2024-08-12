@@ -62,7 +62,6 @@ function UsersPage() {
               <p>{user.username}</p>
               <p>{user.email}</p>
             </div>
-
             <Btn>
               <Link className="link" to={`/users/${user.id}`}>
                 {user.name}
